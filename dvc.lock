@@ -5,8 +5,8 @@ stages:
     deps:
     - path: data/transactions.csv
       hash: md5
-      md5: 4d6b22039dd5123176323dc8f0639621
-      size: 154906
+      md5: ed3a72472f975230ea8e99161e7cd285
+      size: 120404
     - path: src/preparer.py
       hash: md5
       md5: 743817744e9c62f2031d90b73d594927
@@ -18,44 +18,44 @@ stages:
     outs:
     - path: data/prepare/test.csv
       hash: md5
-      md5: 1af32c468e4b87a687f21238301c4936
-      size: 38776
+      md5: e123b5389577c40fe968e470f4c5640d
+      size: 30191
     - path: data/prepare/train.csv
       hash: md5
-      md5: da92511555a5160e724814993516c7ce
-      size: 116171
+      md5: 0e3e1858904c089fe6a144c85d37ff0d
+      size: 90254
   entrainer:
     cmd: python src/entrainer.py
     deps:
     - path: data/prepare/train.csv
       hash: md5
-      md5: da92511555a5160e724814993516c7ce
-      size: 116171
+      md5: 0e3e1858904c089fe6a144c85d37ff0d
+      size: 90254
     - path: src/entrainer.py
       hash: md5
       md5: 3c2425385229019ea8f01af66562617a
       size: 647
     params:
       params.yaml:
-        entrainement.max_depth: 8
+        entrainement.max_depth: 12
         entrainement.n_estimators: 300
         entrainement.random_state: 42
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 3e6f2dcdca6cbe0cecb992d4efd36634
-      size: 6515641
+      md5: df531bae7a7f5410164375a72e9018a6
+      size: 11316905
   evaluer:
     cmd: python src/evaluer.py
     deps:
     - path: data/prepare/test.csv
       hash: md5
-      md5: 1af32c468e4b87a687f21238301c4936
-      size: 38776
+      md5: e123b5389577c40fe968e470f4c5640d
+      size: 30191
     - path: models/model.pkl
       hash: md5
-      md5: 3e6f2dcdca6cbe0cecb992d4efd36634
-      size: 6515641
+      md5: df531bae7a7f5410164375a72e9018a6
+      size: 11316905
     - path: src/evaluer.py
       hash: md5
       md5: 7b6753433ff8906396bccec395a2e99c
@@ -63,9 +63,9 @@ stages:
     outs:
     - path: reports/confusion.png
       hash: md5
-      md5: 28e64feeb8ea2bc84a64b98c5d2a4344
-      size: 15525
+      md5: c50637f52686118485ae61bc4d1123d1
+      size: 16874
     - path: reports/metrics.json
       hash: md5
-      md5: 8826efa6c736b52ed4d2b7bc5ed91db8
-      size: 64
+      md5: 05d8bb55c024ba339b2d04c8aed35a99
+      size: 65
